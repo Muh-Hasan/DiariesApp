@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.css'
+// components
+import Diary from './components/Dariy/dairy'
 
 function App() {
   return (
     <div>
-      <h1>hello world</h1>
+      <Diary />
     </div>
   );
 }
