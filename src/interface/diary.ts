@@ -1,6 +1,6 @@
 export interface Diaries{
-    id : string,
+    id : number,
     tittle : string,
     content: string,
-    userId : string
+    time : string
 }
