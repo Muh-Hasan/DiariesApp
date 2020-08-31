@@ -6,10 +6,12 @@ import { store , remove } from '../../store/index'
 export default function Displaydiary() {
 
     const diary = useSelector((state: Diaries[]) => state)          
-    const [edit, setedit] = useState(false);
-    
+
+
+    const [edit, setedit] = useState(false);    
 
     var a = diary.map((dia, i) => {
+        
         return (
             <div key={dia.id}>
                 <div>
@@ -22,7 +24,7 @@ export default function Displaydiary() {
                 <button value={dia.id}>
                     edit
                 </button>
-                <button onClick={(e) => store.dispatch(remove(state))}>
+                <button onClick={() => store.dispatch(remove(dia.id))}>
                     delete
                 </button>
             </div>

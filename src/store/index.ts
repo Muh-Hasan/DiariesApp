@@ -1,25 +1,27 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 import { Diaries } from '../interface/diary'
 
-const diarySlice = createSlice({
+let newState: Diaries[];
+
+const diarySlice: any = createSlice({
     name: 'diary',
     initialState: [] as Diaries[],
     reducers: {
         addDairy: (state, action) => {
-           let newState = [...state]
-           newState.push(action.payload)
-           return newState 
+            newState = [...state]
+            newState.push(action.payload)
+            return newState
         },
         remove: (state, action) => {
-          let remove = [
-              ...state.find()
-          ]             
-        }
+            newState = [...state]
+            newState = newState.filter(rm => rm.id != action.payload)
+            return newState
+        },
     }
 })
 
 const store = configureStore({ reducer: diarySlice.reducer })
 
-export const { addDairy , remove } = diarySlice.actions
+export const { addDairy, remove } = diarySlice.actions
 
 export { diarySlice, store }
