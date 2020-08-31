@@ -9,15 +9,18 @@ export default function Displaydiary() {
 
 
     const [edit, setedit] = useState(false);
-    const [content , setContent] = useState('')
-    const [ tittle , setTittle ] = useState('')
+    const [content, setContent] = useState('')
+    const [tittle, setTittle] = useState('')
 
 
     var a = diary.map((dia, i) => {
 
         return (
             <div key={dia.id}>
-                {edit ?<div><input type="text" placeholder={dia.time} /> <textarea cols={30} rows={10}>{dia.content}</textarea></div> :
+                {edit ? <div>
+                    <input type="text" value={dia.tittle} onChange={(e) => { setTittle(e.target.value)}} />
+                    <textarea cols={30} rows={10} placeholder={dia.content} onChange={(e) => { setContent(e.target.value)}} ></textarea>
+                </div> :
                     <div>
                         <div>
                             <h6>Tittle: {dia.tittle} </h6>
@@ -26,19 +29,22 @@ export default function Displaydiary() {
                         <div>
                             <p>{dia.content}</p>
                         </div>
-                    </div>    
-            }
-                    <div>
-                        <button value={dia.id} onClick={() => { setedit(true) }} >{edit ? 'update' : 'edit'}</button>
-                        <button onClick={() => store.dispatch(remove(dia.id))}>delete</button>
                     </div>
+                }
+                <div>
+                    <button value={dia.id} onClick={() => { 
+                        
+                        setedit(true)
+                         }} >{edit ? 'update' : 'edit'}</button>
+                    <button onClick={() => store.dispatch(remove(dia.id))}>delete</button>
+                </div>
             </div>
         )
     })
-return (
-                <div>
-                    <h1>list</h1>
-                    {a}
-                </div>
-)
+    return (
+        <div>
+            <h1>list</h1>
+            {a}
+        </div>
+    )
 }
