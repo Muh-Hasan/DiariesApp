@@ -14,7 +14,7 @@ const diarySlice: any = createSlice({
         },
         remove: (state, action) => {
             newState = [...state]
-            newState = newState.filter(rm => rm.id != action.payload)
+            newState = newState.filter(rm => rm.id !== action.payload)
             return newState
         },
     }
