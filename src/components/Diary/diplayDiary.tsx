@@ -7,19 +7,18 @@ export default function Displaydiary() {
 
     const diary = useSelector((state: Diaries[]) => state)
 
-
     const [edit, setedit] = useState(false);
     const [content, setContent] = useState('')
     const [tittle, setTittle] = useState('')
-
 
     var a = diary.map((dia, i) => {
 
         return (
             <div key={dia.id}>
                 {edit ? <div>
-                    <input type="text" value={dia.tittle} onChange={(e) => { setTittle(e.target.value)}} />
-                    <textarea cols={30} rows={10} placeholder={dia.content} onChange={(e) => { setContent(e.target.value)}} ></textarea>
+                <input type="text" value={tittle} 
+                 onChange={(e) => { setTittle(e.currentTarget.value)}} />
+                <textarea cols={30} rows={10} value={content} onChange={(e) => { setContent(e.target.value)}}></textarea>
                 </div> :
                     <div>
                         <div>
@@ -32,10 +31,12 @@ export default function Displaydiary() {
                     </div>
                 }
                 <div>
-                    <button value={dia.id} onClick={() => { 
-                        
-                        setedit(true)
-                         }} >{edit ? 'update' : 'edit'}</button>
+                    <button value={dia.id} onClick={() => {
+                        if(edit){
+                            setTittle(dia.tittle)
+                        }
+                        setedit(!edit)
+                    }} >{edit ? 'update' : 'edit'}</button>
                     <button onClick={() => store.dispatch(remove(dia.id))}>delete</button>
                 </div>
             </div>
