@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Diaries } from '../../interface/diary'
-import { store, remove } from '../../store/index'
+import { store, remove , update } from '../../store/index'
 
 export default function Displaydiary() {
 
     const diary = useSelector((state: Diaries[]) => state)
+    
+    let s = diary.filter
 
     const [edit, setedit] = useState(false);
     const [content, setContent] = useState('')
     const [tittle, setTittle] = useState('')
-
+    
     var a = diary.map((dia, i) => {
-
         return (
             <div key={dia.id}>
                 {edit ? <div>
-                <input type="text" value={tittle} 
+                <input type="text"  value={tittle} onClick={() => setTittle(dia.tittle)} 
                  onChange={(e) => { setTittle(e.currentTarget.value)}} />
                 <textarea cols={30} rows={10} value={content} onChange={(e) => { setContent(e.target.value)}}></textarea>
                 </div> :
@@ -32,9 +33,10 @@ export default function Displaydiary() {
                 }
                 <div>
                     <button value={dia.id} onClick={() => {
-                        if(edit){
-                            setTittle(dia.tittle)
-                        }
+                        // if(edit){
+                        //     setTittle(dia.tittle)
+                        // }
+                        store.dispatch(update())
                         setedit(!edit)
                     }} >{edit ? 'update' : 'edit'}</button>
                     <button onClick={() => store.dispatch(remove(dia.id))}>delete</button>

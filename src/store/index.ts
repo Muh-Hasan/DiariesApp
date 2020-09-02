@@ -17,11 +17,14 @@ const diarySlice: any = createSlice({
             newState = newState.filter(rm => rm.id !== action.payload)
             return newState
         },
+        update:(state,action) => {
+            return  newState
+        }
     }
 })
 
 const store = configureStore({ reducer: diarySlice.reducer })
 
-export const { addDairy, remove } = diarySlice.actions
+export const { addDairy, remove , update } = diarySlice.actions
 
 export { diarySlice, store }
