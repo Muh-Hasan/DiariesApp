@@ -1,21 +1,26 @@
-import React from 'react';
-import './App.css'
-// components
-import Diary from './components/Diary/diary'
-import Displaydiary from './components/Diary/diplayDiary'
-// redux
-import { Provider } from 'react-redux'
-import {store} from './store/index'
+import React, { FC, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/rootReducer';
 
-function App() {
-  return (
-    <Provider store={store}>
-    <div>
-      <Diary />
-      <Displaydiary />
-    </div>
-    </Provider>
+const Auth = lazy(() => import('./features/auth/Auth'));
+const Home = lazy(() => import('./features/home/Home'));
+
+const App: FC = () => {
+  const isLoggedIn = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
   );
-}
+  return (
+    <Router>
+      <Routes>
+        <Route path="/">
+          <Suspense fallback={<p>Loading...</p>}>
+            {isLoggedIn ? <Home /> : <Auth />}
+          </Suspense>
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
