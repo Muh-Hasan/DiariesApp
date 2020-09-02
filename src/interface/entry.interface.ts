@@ -1,6 +1,6 @@
 export interface Entry{
     id?: string,
-    tittle: string,
+    title: string,
     content: string,
     createdAt: string,
     updatedAt: string,
