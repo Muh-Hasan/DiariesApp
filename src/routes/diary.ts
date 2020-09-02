@@ -41,7 +41,7 @@ export const updateDiary = (schema: any, req: Request): Diary | Response => {
     try {
         const diary = schema.diaries.find(req.params.id);
         const data = JSON.parse(req.requestBody) as Partial<Diary>;
-        const now = dayjs().format();
+        const now = moment().calendar();
         diary.update({
             ...data,
             updatedAt: now,
