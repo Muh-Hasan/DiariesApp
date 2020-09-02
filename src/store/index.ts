@@ -1,30 +1,6 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
-import { Diaries } from '../interface/diary'
+import { configureStore , getDefaultMiddleware  } from '@reduxjs/toolkit'
 
-let newState: Diaries[];
-
-const diarySlice: any = createSlice({
-    name: 'diary',
-    initialState: [] as Diaries[],
-    reducers: {
-        addDairy: (state, action) => {
-            newState = [...state]
-            newState.push(action.payload)
-            return newState
-        },
-        remove: (state, action) => {
-            newState = [...state]
-            newState = newState.filter(rm => rm.id !== action.payload)
-            return newState
-        },
-        update:(state,action) => {
-            return  newState
-        }
-    }
-})
-
-const store = configureStore({ reducer: diarySlice.reducer })
-
-export const { addDairy, remove , update } = diarySlice.actions
-
-export { diarySlice, store }
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: [...getDefaultMiddleware(), customMiddleware],
+});
