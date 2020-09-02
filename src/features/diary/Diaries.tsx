@@ -31,13 +31,14 @@ const Diaries: FC = () => {
         });
       }
     };
+
     fetchDiaries();
   }, [dispatch, user]);
 
   const createDiary = async () => {
     const result = await Swal.mixin({
       input: 'text',
-      confirmButtonText: 'Next →',
+      confirmButtonText: 'Next &rarr;',
       showCancelButton: true,
       progressSteps: ['1', '2'],
     }).queue([
@@ -57,10 +58,10 @@ const Diaries: FC = () => {
     ]);
     if (result.value) {
       const { value } = result;
-      const {
-        diary,
-        user: _user,
-      } = await http.post<Partial<Diary>, { diary: Diary; user: User }>('/diaries/', {
+      const { diary, user: _user } = await http.post<
+        Partial<Diary>,
+        { diary: Diary; user: User }
+      >('/diaries/', {
         title: value[0],
         type: value[1],
         userId: user?.id,
@@ -69,6 +70,7 @@ const Diaries: FC = () => {
         dispatch(addDiary([diary] as Diary[]));
         dispatch(addDiary([diary] as Diary[]));
         dispatch(setUser(_user));
+
         return Swal.fire({
           titleText: 'All done!',
           confirmButtonText: 'OK!',

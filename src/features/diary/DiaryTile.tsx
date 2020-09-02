@@ -1,9 +1,13 @@
 import React, { FC, useState } from 'react';
-import { Diary } from '../../interface/diary.interface';
-import http from '../../server/api';
+import { Diary } from '../../interfaces/diary.interface';
+import http from '../../services/api';
 import { updateDiary } from './diariesSlice';
-import { setCanEdit, setActiveDiaryId, setCurrentlyEditing } from '../entry/editorSlice';
-import { showAlert } from '../../alert';
+import {
+  setCanEdit,
+  setActiveDiaryId,
+  setCurrentlyEditing,
+} from '../entry/editorSlice';
+import { showAlert } from '../../util';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../store';
 
@@ -16,10 +20,11 @@ const buttonStyle: React.CSSProperties = {
   margin: '0 0.5em',
 };
 
-const DiaryList: FC<Props> = (props) => {
+const DiaryTile: FC<Props> = (props) => {
   const [diary, setDiary] = useState(props.diary);
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useAppDispatch();
+
   const totalEntries = props.diary?.entryIds?.length;
 
   const saveChanges = () => {
@@ -66,6 +71,7 @@ const DiaryList: FC<Props> = (props) => {
         )}
       </h2>
       <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
+
       <div style={{ display: 'flex' }}>
         <button
           style={buttonStyle}
@@ -79,7 +85,7 @@ const DiaryList: FC<Props> = (props) => {
         </button>
         <Link to={`diary/${diary.id}`} style={{ width: '100%' }}>
           <button className="secondary" style={buttonStyle}>
-            View all →
+            View all &rarr;
           </button>
         </Link>
       </div>
@@ -87,4 +93,4 @@ const DiaryList: FC<Props> = (props) => {
   );
 };
 
-export default DiaryList;
+export default DiaryTile;

@@ -1,6 +1,6 @@
 import { Response, Request } from 'miragejs';
-import { handleErrors } from '../server/server';
-import { User } from '../interface/user.interface';
+import { handleErrors } from '../server';
+import { User } from '../../../interfaces/user.interface';
 import { randomBytes } from 'crypto';
 
 const generateToken = () => randomBytes(8).toString('hex');

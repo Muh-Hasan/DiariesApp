@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Entry } from '../../interface/entry.interface';
+import { Entry } from '../../interfaces/entry.interface';
 
 const entries = createSlice({
   name: 'entries',
@@ -19,4 +19,5 @@ const entries = createSlice({
 });
 
 export const { setEntries, updateEntry } = entries.actions;
+
 export default entries.reducer;

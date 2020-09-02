@@ -1,6 +1,9 @@
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 
-export const showAlert = (titleText = 'Something happened.', alertType?: SweetAlertIcon): void => {
+export const showAlert = (
+  titleText = 'Something happened.',
+  alertType?: SweetAlertIcon
+): void => {
   Swal.fire({
     titleText,
     position: 'top-end',

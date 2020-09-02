@@ -1,10 +1,9 @@
-import { Server, Model, Factory, belongsTo, hasMany, Response } from 'miragejs';
-
-import user from '../routes/user';
-import * as diary from '../routes/diary'
-
+import { Server, Model, Factory, Response, belongsTo, hasMany } from 'miragejs';
+import user from './routes/user';
+import * as diary from './routes/diary';
 
 export const handleErrors = (error: any, message = 'An error ocurred') => {
+  console.error('Error: ', error);
   return new Response(400, undefined, {
     data: {
       message,
@@ -43,8 +42,8 @@ export const setupServer = (env?: string): Server => {
     },
 
     routes(): void {
-      this.urlPrefix = 'http://localhost:3000/';
-      
+      this.urlPrefix = 'https://diaries.app';
+
       this.get('/diaries/entries/:id', diary.getEntries);
       this.get('/diaries/:id', diary.getDiaries);
 

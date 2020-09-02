@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/rootReducer';
-import http from '../../server/api';
-import { Entry } from '../../interface/entry.interface';
+import { RootState } from '../../rootReducer';
+import http from '../../services/api';
+import { Entry } from '../../interfaces/entry.interface';
 import { setEntries } from '../entry/entriesSlice';
 import { setCurrentlyEditing, setCanEdit } from '../entry/editorSlice';
-import moment from 'moment'
+import dayjs from 'dayjs';
 import { useAppDispatch } from '../../store';
 
 const DiaryEntriesList: FC = () => {
@@ -21,7 +21,7 @@ const DiaryEntriesList: FC = () => {
         .then(({ entries: _entries }) => {
           if (_entries) {
             const sortByLastUpdated = _entries.sort((a, b) => {
-              return moment(b.updatedAt).unix() - moment(a.updatedAt).unix();
+              return dayjs(b.updatedAt).unix() - dayjs(a.updatedAt).unix();
             });
             dispatch(setEntries(sortByLastUpdated));
           }
@@ -33,7 +33,7 @@ const DiaryEntriesList: FC = () => {
     <div className="entries">
       <header>
         <Link to="/">
-          <h3>← Go Back</h3>
+          <h3>&larr; Go Back</h3>
         </Link>
       </header>
       <ul>
