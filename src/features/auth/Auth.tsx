@@ -51,51 +51,51 @@ const Auth: FC = () => {
   };
 
   return (
-    <div className="auth">
-      <div className="card">
+    <div className='auth-main'>
+      <div className='auth-card'>
+        <div className='auth-head'>
+          <h1>Diaries App</h1>
+        </div>
         <form onSubmit={handleSubmit(submitForm)}>
-          <div className="inputWrapper">
-            <input ref={register} name="username" placeholder="Username" />
+          <div >
+            <input ref={register} name='username' placeholder="Username" />
             {errors && errors.username && (
-              <p className="error">{errors.username.message}</p>
+              <p className='errors'>{errors.username.message}</p>
             )}
           </div>
 
-          <div className="inputWrapper">
+          <div>
             <input
               ref={register}
-              name="password"
+              name='password'
               type="password"
               placeholder="Password"
             />
             {errors && errors.password && (
-              <p className="error">{errors.password.message}</p>
+              <p className='errors'>{errors.password.message}</p>
             )}
           </div>
 
           {!isLogin && (
-            <div className="inputWrapper">
+            <div>
               <input
                 ref={register}
-                name="email"
+                name='email'
                 placeholder="Email (optional)"
               />
               {errors && errors.email && (
-                <p className="error">{errors.email.message}</p>
+                <p className='errors'>{errors.email.message}</p>
               )}
             </div>
           )}
 
-          <div className="inputWrapper">
+          <div>
             <button type="submit" disabled={loading}>
               {isLogin ? 'Login' : 'Create account'}
             </button>
           </div>
 
-          <p
-            onClick={() => setIsLogin(!isLogin)}
-            style={{ cursor: 'pointer', opacity: 0.7 }}
-          >
+          <p className='create-new' onClick ={() => setIsLogin(!isLogin)}>
             {isLogin ? 'No account? Create one' : 'Already have an account?'}
           </p>
         </form>
