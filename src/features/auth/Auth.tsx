@@ -12,20 +12,6 @@ import { setUser } from './userSlice';
 import { AuthResponse } from '../../services/mirage/routes/user';
 import { useAppDispatch } from '../../store';
 
-// material ui
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }),
-);
 
 const schema = Yup.object().shape({
   username: Yup.string()
@@ -63,43 +49,58 @@ const Auth: FC = () => {
         setLoading(false);
       });
   };
-  const classes = useStyles();
 
   return (
-    <div>
-      <form className={classes.root} noValidate autoComplete="off"  onSubmit={handleSubmit(submitForm)}>
-        <div>
-          <TextField id="standard-basic" label="Username" ref={register} />
-          {errors && errors.username && (
-            <p>{errors.username.message}</p>
-          )}
-        </div>
-        <div>
-          <TextField id="standard-basic" label="Password" ref={register} type="password" />
-          {errors && errors.password && (
-            <p>{errors.password.message}</p>
-          )}
-        </div>
-        {!isLogin && (
+    <div className="auth">
+      <div className="card">
+        <form onSubmit={handleSubmit(submitForm)}>
           <div className="inputWrapper">
-            <TextField id="standard-basic" label="Email(optional)" ref={register} />
-            {errors && errors.email && (
-              <p className="error">{errors.email.message}</p>
+            <input ref={register} name="username" placeholder="Username" />
+            {errors && errors.username && (
+              <p className="error">{errors.username.message}</p>
             )}
           </div>
-        )}
-        <div>
-          <button type="submit" disabled={loading}>
-            {isLogin ? 'Login' : 'Create account'}
-          </button>
-        </div>
-        <p onClick ={() => setIsLogin(!isLogin)}>
-          {isLogin ? 'No account? Create one' : 'Already have an account?'}
-        </p>
 
-      </form>
+          <div className="inputWrapper">
+            <input
+              ref={register}
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+            {errors && errors.password && (
+              <p className="error">{errors.password.message}</p>
+            )}
+          </div>
+
+          {!isLogin && (
+            <div className="inputWrapper">
+              <input
+                ref={register}
+                name="email"
+                placeholder="Email (optional)"
+              />
+              {errors && errors.email && (
+                <p className="error">{errors.email.message}</p>
+              )}
+            </div>
+          )}
+
+          <div className="inputWrapper">
+            <button type="submit" disabled={loading}>
+              {isLogin ? 'Login' : 'Create account'}
+            </button>
+          </div>
+
+          <p
+            onClick={() => setIsLogin(!isLogin)}
+            style={{ cursor: 'pointer', opacity: 0.7 }}
+          >
+            {isLogin ? 'No account? Create one' : 'Already have an account?'}
+          </p>
+        </form>
+      </div>
     </div>
-
   );
 };
 
