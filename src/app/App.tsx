@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../rootReducer';
 
+// react spinner 
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
+
+
 const Auth = lazy(() => import('../features/auth/Auth'));
 const Home = lazy(() => import('../features/home/Home'));
 
@@ -15,7 +19,7 @@ const App: FC = () => {
     <Router>
       <Switch>
         <Route path="/">
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<ClimbingBoxLoader color={'black'} />}>
             {isLoggedIn ? <Home /> : <Auth />}
           </Suspense>
         </Route>
