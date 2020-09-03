@@ -67,7 +67,7 @@ const Auth: FC = () => {
 
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off"  onSubmit={handleSubmit(submitForm)}>
         <div>
           <TextField id="standard-basic" label="Username" ref={register} />
           {errors && errors.username && (
