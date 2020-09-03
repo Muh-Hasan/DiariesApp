@@ -64,3 +64,17 @@ body{
   letter-spacing: 2px;
   font-size: 23px;
 }
+
+/* loading */
+.loader-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+  flex-direction: column;
+}
+.loader-center h6{
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
