@@ -11,6 +11,9 @@ import { updateEntry } from './entriesSlice';
 import { showAlert } from '../../util';
 import { useAppDispatch } from '../../store';
 
+import Divider from '@material-ui/core/Divider';
+
+
 const Editor: FC = () => {
   const { currentlyEditing: entry, canEdit, activeDiaryId } = useSelector(
     (state: RootState) => state.editor
@@ -55,16 +58,7 @@ const Editor: FC = () => {
 
   return (
     <div className="editor">
-      <header
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          marginBottom: '0.2em',
-          paddingBottom: '0.2em',
-          borderBottom: '1px solid rgba(0,0,0,0.1)',
-        }}
-      >
+      <header>
         {entry && !canEdit ? (
           <h4>
             {entry.title}
@@ -83,6 +77,7 @@ const Editor: FC = () => {
           </h4>
         ) : (
           <input
+            placeholder='title'
             value={editedEntry?.title ?? ''}
             disabled={!canEdit}
             onChange={(e) => {
@@ -101,13 +96,14 @@ const Editor: FC = () => {
           />
         )}
       </header>
+
       {entry && !canEdit ? (
         <Markdown>{entry.content}</Markdown>
       ) : (
         <>
-          <textarea
+          <textarea className='textArea'
             disabled={!canEdit}
-            placeholder="Supports markdown!"
+            placeholder="Write here"
             value={editedEntry?.content ?? ''}
             onChange={(e) => {
               if (editedEntry) {
