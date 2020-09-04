@@ -4,20 +4,21 @@
 /* primary #00E5FF */
 /* #FF0266 */
 /* shadow #BDBDBD */
-@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 *{
-  color: #FF7597;
+  /* color: #FF7597; */
   margin: 0;
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 .errors{
-  color: #B00020;
+  color: #E11900;
   margin-bottom: 5px;
   letter-spacing: 1px;
 }
 body{
-  background-color: #212121;
+  background-color: black;
+
 }
 .auth-main{
   margin-top: 200px;

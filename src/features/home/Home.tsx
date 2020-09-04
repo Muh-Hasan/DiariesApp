@@ -4,12 +4,15 @@ import Diaries from '../diary/Diaries';
 import Editor from '../entry/Editor';
 
 // material ui
+import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
@@ -53,7 +56,7 @@ interface Props {
   window?: () => Window;
 }
 
-export default function Home(props: Props) {
+export default function ResponsiveDrawer(props: Props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -63,12 +66,13 @@ export default function Home(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
-
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div className={classes.root}>
       <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -78,6 +82,11 @@ export default function Home(props: Props) {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap>
+            Diaries App
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         <Hidden smUp implementation="css">
           <Drawer
@@ -93,8 +102,7 @@ export default function Home(props: Props) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            {/* {drawer} */}
-         <Diaries />
+            <Diaries />
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -105,15 +113,13 @@ export default function Home(props: Props) {
             variant="permanent"
             open
           >
-         <Diaries />
-
+            <Diaries />
           </Drawer>
         </Hidden>
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Editor />
-
+            <Editor />
       </main>
     </div>
   );
