@@ -11,9 +11,6 @@ import { updateEntry } from './entriesSlice';
 import { showAlert } from '../../util';
 import { useAppDispatch } from '../../store';
 
-import Divider from '@material-ui/core/Divider';
-
-
 const Editor: FC = () => {
   const { currentlyEditing: entry, canEdit, activeDiaryId } = useSelector(
     (state: RootState) => state.editor
