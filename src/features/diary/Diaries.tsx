@@ -83,13 +83,13 @@ const Diaries: FC = () => {
   };
 
   return (
-    <div style={{ padding: '1em 0.4em' }}>
+    <div>
       <Switch>
         <Route path="/diary/:id">
           <DiaryEntriesList />
         </Route>
         <Route path="/">
-          <button onClick={createDiary}>Create New</button>
+          <button className='create-new-btn' onClick={createDiary}>Create New</button>
           {diaries.map((diary, idx) => (
             <DiaryTile key={idx} diary={diary} />
           ))}

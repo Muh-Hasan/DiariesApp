@@ -18,7 +18,6 @@ const App: FC = () => {
       <Switch>
         <Route path="/">
           <Suspense fallback={<Loader />}>
-
             {isLoggedIn ? <Home /> : <Auth />}
           </Suspense>
         </Route>

@@ -11,6 +11,8 @@ import { showAlert } from '../../util';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../store';
 
+
+
 interface Props {
   diary: Diary;
 }
@@ -44,7 +46,6 @@ const DiaryTile: FC<Props> = (props) => {
   return (
     <div className="diary-tile">
       <h2
-        className="title"
         title="Click to edit"
         onClick={() => setIsEditing(true)}
         style={{
@@ -67,25 +68,25 @@ const DiaryTile: FC<Props> = (props) => {
             }}
           />
         ) : (
-          <span>{diary.title}</span>
-        )}
+            <span>{diary.title}</span>
+          )}
       </h2>
+      <div className='sub-main'>
       <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
-
+      </div>
       <div style={{ display: 'flex' }}>
         <button
-          style={buttonStyle}
           onClick={() => {
             dispatch(setCanEdit(true));
             dispatch(setActiveDiaryId(diary.id as string));
             dispatch(setCurrentlyEditing(null));
           }}
         >
-          Add New Entry
+          Add 
         </button>
-        <Link to={`diary/${diary.id}`} style={{ width: '100%' }}>
-          <button className="secondary" style={buttonStyle}>
-            View all &rarr;
+        <Link to={`diary/${diary.id}`}>
+          <button className="secondary">
+            View all 
           </button>
         </Link>
       </div>
