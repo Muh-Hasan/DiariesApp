@@ -9,6 +9,7 @@
 *{
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
+  text-decoration: none;
 }
 .errors{
   color: #E11900;
@@ -210,4 +211,37 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.editor-display h4{
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black;
+}
+.editor-display a{
+  color: black;
+  margin-left: 10px;
+}
+.back-sign{
+  color: black;
+  margin-left: 20px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.enteries {
+  text-align: left;
+  width: 80%;
+  min-height: 50px;
+}
+.enteries li{
+  list-style: none;
+  height: 30px;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
 }

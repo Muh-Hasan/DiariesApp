@@ -55,7 +55,7 @@ const Editor: FC = () => {
 
   return (
     <div className="editor">
-      <header>
+      <header className='editor-display'>
         {entry && !canEdit ? (
           <h4>
             {entry.title}

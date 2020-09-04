@@ -33,11 +33,11 @@ const DiaryEntriesList: FC = () => {
     <div className="entries">
       <header>
         <Link to="/">
-          <h3>&larr; Go Back</h3>
+          <h3 className='back-sign'>Back</h3>
         </Link>
       </header>
-      <ul>
-        {entries.map((entry) => (
+      <ul className='enteries'>
+        {entries.map((entry , i) => (
           <li
             key={entry.id}
             onClick={() => {
@@ -45,7 +45,7 @@ const DiaryEntriesList: FC = () => {
               dispatch(setCanEdit(true));
             }}
           >
-            {entry.title}
+            {i+1}. {entry.title}
           </li>
         ))}
       </ul>
