@@ -40,50 +40,52 @@ const DiaryTile: FC<Props> = (props) => {
 
   return (
     <div className="diary-tile">
-      <h2
-        title="Click to edit"
-        onClick={() => setIsEditing(true)}
-        style={{
-          cursor: 'pointer',
-        }}
-      >
-        {isEditing ? (
-          <input
-            value={diary.title}
-            onChange={(e) => {
-              setDiary({
-                ...diary,
-                title: e.target.value,
-              });
-            }}
-            onKeyUp={(e) => {
-              if (e.key === 'Enter') {
-                saveChanges();
-              }
-            }}
-          />
-        ) : (
-            <span>{diary.title}</span>
-          )}
-      </h2>
-      <div className='sub-main'>
-      <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
-      </div>
-      <div style={{ display: 'flex' }}>
-        <button
-          onClick={() => {
-            dispatch(setCanEdit(true));
-            dispatch(setActiveDiaryId(diary.id as string));
-            dispatch(setCurrentlyEditing(null));
+      <div className='diary-2'>
+        <h2
+          title="Click to edit"
+          onClick={() => setIsEditing(true)}
+          style={{
+            cursor: 'pointer',
           }}
         >
-          Add 
+          {isEditing ? (
+            <input
+              value={diary.title}
+              onChange={(e) => {
+                setDiary({
+                  ...diary,
+                  title: e.target.value,
+                });
+              }}
+              onKeyUp={(e) => {
+                if (e.key === 'Enter') {
+                  saveChanges();
+                }
+              }}
+            />
+          ) : (
+              <span>{diary.title}</span>
+            )}
+        </h2>
+        <div className='sub-main'>
+          <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
+        </div>
+        <div className='diary-btn' >
+          <button
+            onClick={() => {
+              dispatch(setCanEdit(true));
+              dispatch(setActiveDiaryId(diary.id as string));
+              dispatch(setCurrentlyEditing(null));
+            }}
+          >
+            Add
         </button>
-        <Link to={`diary/${diary.id}`}>
-          <button className="secondary">
-            View all 
+          <Link to={`diary/${diary.id}`}>
+            <button className="secondary">
+              View all
           </button>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -67,60 +67,61 @@ const Editor: FC = () => {
                   dispatch(setCanEdit(true));
                 }
               }}
-              style={{ marginLeft: '0.4em' }}
             >
               (Edit)
             </a>
           </h4>
         ) : (
-          <input
-            placeholder='title'
-            value={editedEntry?.title ?? ''}
-            disabled={!canEdit}
-            onChange={(e) => {
-              if (editedEntry) {
-                updateEditedEntry({
-                  ...editedEntry,
-                  title: e.target.value,
-                });
-              } else {
-                updateEditedEntry({
-                  title: e.target.value,
-                  content: '',
-                });
-              }
-            }}
-          />
-        )}
+            <input
+              placeholder='title'
+              value={editedEntry?.title ?? ''}
+              disabled={!canEdit}
+              onChange={(e) => {
+                if (editedEntry) {
+                  updateEditedEntry({
+                    ...editedEntry,
+                    title: e.target.value,
+                  });
+                } else {
+                  updateEditedEntry({
+                    title: e.target.value,
+                    content: '',
+                  });
+                }
+              }}
+            />
+          )}
       </header>
 
       {entry && !canEdit ? (
         <Markdown>{entry.content}</Markdown>
       ) : (
-        <>
-          <textarea className='textArea'
-            disabled={!canEdit}
-            placeholder="Write here"
-            value={editedEntry?.content ?? ''}
-            onChange={(e) => {
-              if (editedEntry) {
-                updateEditedEntry({
-                  ...editedEntry,
-                  content: e.target.value,
-                });
-              } else {
-                updateEditedEntry({
-                  title: '',
-                  content: e.target.value,
-                });
-              }
-            }}
-          />
-          <button onClick={saveEntry} disabled={!canEdit}>
-            Save
+          <>
+            <textarea className='textArea'
+              disabled={!canEdit}
+              placeholder="Write here"
+              value={editedEntry?.content ?? ''}
+              onChange={(e) => {
+                if (editedEntry) {
+                  updateEditedEntry({
+                    ...editedEntry,
+                    content: e.target.value,
+                  });
+                } else {
+                  updateEditedEntry({
+                    title: '',
+                    content: e.target.value,
+                  });
+                }
+              }}
+            />
+            <div className='save-btn-div'>
+              <button onClick={saveEntry} disabled={!canEdit}>
+                Save
           </button>
-        </>
-      )}
+            </div>
+          </>
+        )}
     </div>
   );
 };

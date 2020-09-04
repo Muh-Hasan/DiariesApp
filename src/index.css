@@ -59,6 +59,7 @@
   color: #757575;
   font-weight: 300;
 }
+
 .auth-head{
   text-align: center;
   margin-bottom: 30px;
@@ -83,7 +84,26 @@
   font-weight: 700;
   letter-spacing: 2px;
 }
-
+.create-new-btn-div{
+  text-align: center;
+}
+.create-new-btn{
+  width: 80%;
+  min-height: 50px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: black;
+  border: 3px solid black;
+  outline: none;
+  cursor: pointer;
+}
+.create-new-btn:hover{
+  color: white;
+  background-color: black;
+}
 
  .two-cols {
   display: flex;
@@ -92,9 +112,10 @@
 }
 
 .two-cols .left {
+  background-color: #F5F5F5;
   padding-top: 50px;
   height: 100%;
-  border-right: 1px solid gray;
+  border-right: 1px solid #EEEEEE;
   flex: .3;
 }
 
@@ -102,4 +123,91 @@
   padding-top: 50px;
   overflow-y: auto;
   flex: .7;
+}
+
+.editor{
+  margin-left: 20px;
+}
+.editor input{
+  width: 80%;
+    height: 50px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    background-color: #FAFAFA;
+}
+.textArea{
+  min-height: 400px;
+    width: 80%;
+    background-color: #FAFAFA;
+    border: none;
+    font-size: 16px
+}
+.save-btn-div{
+  margin-top: 10px;
+}
+.save-btn-div button{
+  min-height: 40px;
+    width: 10%;
+    border: none;
+    background: #333333;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    outline: none;
+}
+.main-diary{
+  text-align: center;
+}
+.diary-tile{
+  border: 1px solid #9E9E9E;
+    min-height: 100px;
+    width: 80%;
+    margin-top: 20px;
+}
+.diary-2{
+ text-align: left; 
+}
+.diary-2 h2{
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.diary-2 span{
+  margin-left: 10px;
+  font-size: 26px;
+  font-weight: 400;
+}
+.diary-2 p {
+  margin-left: 10px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  color: #757575;
+}
+.diary-btn{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.diary-btn button{
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #333333;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.center-diary{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

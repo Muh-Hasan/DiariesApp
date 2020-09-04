@@ -83,16 +83,20 @@ const Diaries: FC = () => {
   };
 
   return (
-    <div>
+    <div className='main-diary'>
       <Switch>
         <Route path="/diary/:id">
           <DiaryEntriesList />
         </Route>
         <Route path="/">
+          <div className='create-new-btn-div'>
           <button className='create-new-btn' onClick={createDiary}>Create New</button>
+          </div>
+          <div className='center-diary'>
           {diaries.map((diary, idx) => (
             <DiaryTile key={idx} diary={diary} />
           ))}
+          </div>
         </Route>
       </Switch>
     </div>
